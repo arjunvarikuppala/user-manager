@@ -1,0 +1,37 @@
+###create user
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"ravi",
+    "email":"ravi@gmail.com",
+    "dateOfBirth":"2005-08-27",
+    "mobileNumber":9876543213
+}
+###
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"deeksha",
+    "email":"deeksha@gmail.com",
+    "dateOfBirth":"2006-03-15",
+    "mobileNumber":9849639877
+}
+
+### get all users
+###
+GET http://localhost:4000/user-api/users
+
+
+### read user by id
+###
+GET http://localhost:4000/user-api/users/69a69d4c24f6cc9f7a965fd5
+
+
+###
+DELETE  http://localhost:4000/user-api/users/69a69d4c24f6cc9f7a965fd5
+
+### activate user
+
+PATCH http://localhost:4000/user-api/users/69a69d4c24f6cc9f7a965fd5
