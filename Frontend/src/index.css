@@ -1,1 +1,408 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --bg-page: #f5f5f7;
+  --bg-card: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent: #0066cc;
+  --accent-hover: #0077ed;
+  --border-color: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background-color: var(--bg-page) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-sans) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Content Wrapper Styling */
+div.min-h-screen.mx-20.mt-20 {
+  margin: 40px auto !important;
+  padding: 0 24px !important;
+  max-width: 1100px !important;
+  min-height: calc(100vh - 220px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Translucent Sticky Header Navigation */
+nav.bg-lime-200 {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  padding: 12px 40px !important;
+  height: 64px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* Nav Logo Styling */
+nav.bg-lime-200 img.rounded-full {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  opacity: 0.95 !important;
+  transition: opacity 0.2s ease !important;
+  filter: grayscale(1) contrast(1.2);
+}
+
+nav.bg-lime-200 img.rounded-full:hover {
+  opacity: 1 !important;
+  filter: none;
+}
+
+/* Navigation Links List */
+nav.bg-lime-200 ul.flex {
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Navigation Links */
+nav.bg-lime-200 ul.flex a {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  transition: all 0.24s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-block !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+nav.bg-lime-200 ul.flex a:hover {
+  color: var(--text-primary) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Active Navigation Link Override */
+nav.bg-lime-200 ul.flex a.bg-lime-500,
+nav.bg-lime-200 ul.flex a.bg-lime-500.text-lime-50 {
+  background: var(--text-primary) !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+
+/* Home Page Hero Section (Apple Store Inspired) */
+div.min-h-screen.mx-20.mt-20 > div:not(:has(h1)):not(:has(form)):not(:has(.grid)):not(:has(p)) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 100px 32px !important;
+  background: var(--bg-card) radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.04) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.02) 0%, transparent 40%) !important;
+  border-radius: 28px !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02) !important;
+  min-height: 480px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+}
+
+div.min-h-screen.mx-20.mt-20 > div:not(:has(h1)):not(:has(form)):not(:has(.grid)):not(:has(p))::before {
+  content: "Store. The best way to manage users." !important;
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.15 !important;
+  max-width: 650px !important;
+  margin-bottom: 20px !important;
+  display: block !important;
+}
+
+div.min-h-screen.mx-20.mt-20 > div:not(:has(h1)):not(:has(form)):not(:has(.grid)):not(:has(p))::after {
+  content: "Designed to help you organize team directories, configure details, and manage profiles with speed, privacy, and absolute elegance." !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.5 !important;
+  max-width: 600px !important;
+  display: block !important;
+}
+
+/* Titles Style (SF/Inter bold) */
+h1.text-5xl.text-gray-600 {
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 40px !important;
+  text-align: center !important;
+}
+
+/* Add User Form Style */
+form.max-w-96.mx-auto.mt-10 {
+  background: var(--bg-card) !important;
+  padding: 48px !important;
+  border-radius: 28px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  max-width: 440px !important;
+  margin: 20px auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* Form inputs styling */
+form.max-w-96.mx-auto.mt-10 input {
+  font-family: var(--font-sans) !important;
+  width: 100% !important;
+  padding: 15px 18px !important;
+  font-size: 15px !important;
+  border-radius: 12px !important;
+  border: 1px solid #d2d2d7 !important;
+  background: #ffffff !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 20px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+form.max-w-96.mx-auto.mt-10 input::placeholder {
+  color: #a1a1a6 !important;
+}
+
+form.max-w-96.mx-auto.mt-10 input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.15) !important;
+  outline: none !important;
+}
+
+/* Form Add User Button styling */
+form.max-w-96.mx-auto.mt-10 button[type="submit"] {
+  width: 100% !important;
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 14px 24px !important;
+  border-radius: 9999px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15) !important;
+}
+
+form.max-w-96.mx-auto.mt-10 button[type="submit"]:hover {
+  background: var(--accent-hover) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(0, 102, 204, 0.24) !important;
+}
+
+form.max-w-96.mx-auto.mt-10 button[type="submit"]:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 6px rgba(0, 102, 204, 0.1) !important;
+}
+
+/* User list layout & cards */
+div.grid > div.p-10.shadow-2xl.cursor-pointer {
+  background: var(--bg-card) !important;
+  border-radius: 22px !important;
+  padding: 32px 24px !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015) !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+div.grid > div.p-10.shadow-2xl.cursor-pointer:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 102, 204, 0.15) !important;
+}
+
+/* Card Avatar Symbol */
+div.grid > div.p-10.shadow-2xl.cursor-pointer::before {
+  content: "" !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: #f5f5f7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 16px !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2386868b"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') !important;
+  background-size: 28px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: background-color 0.2s ease !important;
+}
+
+div.grid > div.p-10.shadow-2xl.cursor-pointer:hover::before {
+  background-color: rgba(0, 102, 204, 0.08) !important;
+}
+
+/* Card names & emails */
+div.grid > div.p-10.shadow-2xl.cursor-pointer p.text-3xl {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 6px !important;
+  line-height: 1.3 !important;
+}
+
+div.grid > div.p-10.shadow-2xl.cursor-pointer p.text-2xl {
+  font-size: 13px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 400 !important;
+  word-break: break-all !important;
+}
+
+/* Loading & Error Screens style */
+p.text-center.text-orange-400.text-3xl,
+p.text-center.text-red-400.text-3xl {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  max-width: 400px !important;
+  margin: 40px auto !important;
+  text-align: center !important;
+}
+
+p.text-center.text-orange-400.text-3xl {
+  color: var(--accent) !important;
+  background: rgba(0, 102, 204, 0.05) !important;
+  border: 1px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+p.text-center.text-red-400.text-3xl {
+  color: #ff3b30 !important;
+  background: rgba(255, 59, 48, 0.05) !important;
+  border: 1px solid rgba(255, 59, 48, 0.1) !important;
+}
+
+/* User Details Card styling (User.jsx) */
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) {
+  background: var(--bg-card) !important;
+  padding: 48px !important;
+  border-radius: 28px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  max-width: 500px !important;
+  margin: 40px auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* Detail Avatar Symbol */
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class])::before {
+  content: "" !important;
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  background: #f5f5f7 !important;
+  margin: 0 auto 24px auto !important;
+  display: block !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2386868b"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>') !important;
+  background-size: 36px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Detail Name */
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:nth-child(1) {
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  text-align: center !important;
+  margin: 0 0 32px 0 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* Detail rows */
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:not(:nth-child(1)) {
+  font-size: 14px !important;
+  color: var(--text-primary) !important;
+  padding: 16px 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:last-child {
+  border-bottom: none !important;
+}
+
+/* Add custom labels to the rows */
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:nth-child(2)::before {
+  content: "Email" !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+}
+
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:nth-child(3)::before {
+  content: "Date of Birth" !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+}
+
+div.min-h-screen.mx-20.mt-20 > div:has(> p:nth-child(4)):not([class]) p:nth-child(4)::before {
+  content: "Mobile" !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Corporate Apple Style Footer */
+div.min-h-screen.mx-20.mt-20 + div {
+  background: #f5f5f7 !important;
+  border-top: 1px solid var(--border-color) !important;
+  padding: 36px 40px !important;
+  margin-top: 80px !important;
+  font-size: 0 !important;
+  text-align: center !important;
+  color: var(--text-secondary) !important;
+}
+
+div.min-h-screen.mx-20.mt-20 + div::before {
+  content: "Copyright © 2026 User Management Corp. All rights reserved." !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+  color: var(--text-secondary) !important;
+}
+
+div.min-h-screen.mx-20.mt-20 + div::after {
+  content: "Privacy Policy   •   Terms of Use   •   Sales and Refunds   •   Legal" !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #86868b !important;
+  word-spacing: 1px !important;
+}

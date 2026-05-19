@@ -1,4 +1,5 @@
 import exp from "express";
+// Backend Server initialization
 import { connect } from "mongoose";
 import { config } from "dotenv";
 import { UserApp } from "./APIs/UserApi.js";
