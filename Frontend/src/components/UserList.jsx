@@ -8,7 +8,7 @@ function UsersList() {
   useEffect(() => {
     async function getUsers() {
       try {
-        let res = await fetch("http://localhost:4000/user-api/users", {
+        let res = await fetch("/user-api/users", {
           method: "GET",
         });
 

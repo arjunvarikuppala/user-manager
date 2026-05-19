@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/user-api/(.*)", "destination": "/api" },
+    { "source": "/health", "destination": "/api" },
+    { "source": "/assets/(.*)", "destination": "/Frontend/dist/assets/$1" },
+    { "source": "/(.*)", "destination": "/Frontend/dist/index.html" }
+  ]
+}

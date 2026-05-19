@@ -25,8 +25,10 @@ async function connectDB() {
     await connect(process.env.DB_URL);
     console.log("Connected to DB");
     //assign port number
-    const port = process.env.PORT;
-    app.listen(port, () => console.log(`Server on port ${port}`));
+    const port = process.env.PORT || 4000;
+    if (!process.env.VERCEL) {
+      app.listen(port, () => console.log(`Server on port ${port}`));
+    }
   } catch (err) {
     console.log("err in DB connection :", err);
   }
@@ -61,3 +63,5 @@ app.use((err, req, res, next) => {
     message: "Internal Server Error",
   });
 });
+
+export default app;
