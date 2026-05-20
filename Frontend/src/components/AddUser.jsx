@@ -62,6 +62,20 @@ function AddUser() {
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
                 message: "Please enter a valid email address"
+              },
+              validate: (value) => {
+                try {
+                  const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+                  const isDuplicate = existingUsers.some(
+                    (u) => u.email.toLowerCase() === value.toLowerCase() && u.status !== false
+                  );
+                  if (isDuplicate) {
+                    return "Email is already registered";
+                  }
+                } catch (e) {
+                  console.error("Failed to check duplicate email:", e);
+                }
+                return true;
               }
             })}
             className="p-4 border border-gray-300 rounded-xl w-full text-xl focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-transparent transition-all placeholder-gray-400"
