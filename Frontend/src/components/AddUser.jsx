@@ -60,12 +60,12 @@ function AddUser() {
             {...register("email", {
               required: "Email is required",
               pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/i,
-                message: "Please enter a valid Gmail address (e.g. user@gmail.com)"
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                message: "Please enter a valid email address"
               }
             })}
             className="p-4 border border-gray-300 rounded-xl w-full text-xl focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-transparent transition-all placeholder-gray-400"
-            placeholder="Gmail Address"
+            placeholder="Email"
           />
           {errors.email && <p className="text-red-500 text-sm text-left mt-2 pl-1 font-medium">{errors.email.message}</p>}
         </div>
