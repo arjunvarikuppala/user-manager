@@ -3,9 +3,14 @@ import exp from "express";
 import { connect } from "mongoose";
 import { config } from "dotenv";
 import { UserApp } from "./APIs/UserApi.js";
-import cors from 'cors'
+import cors from 'cors';
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
 //Read environment variables
-config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+config({ path: join(__dirname, ".env") });
 
 
 // Create HTTP Server

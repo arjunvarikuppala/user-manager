@@ -1,31 +1,41 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useNavigate} from 'react-router'
 
 function UsersList() {
-  let [users, setUsers] = useState([]);
-  let navigate=useNavigate()
-
-  useEffect(() => {
-    async function getUsers() {
-      try {
-        let res = await fetch("/user-api/users", {
-          method: "GET",
-        });
-
-        if (res.status === 200) {
-          //extract json data
-          let resObj = await res.json();
-          //update the state
-          setUsers(resObj.payload);
-        } else {
-        }
-      } catch (err) {
-        //set error
+  let [users] = useState(() => {
+    try {
+      const storedUsers = localStorage.getItem("users");
+      if (storedUsers === null) {
+        const mockUsers = [
+          {
+            _id: "mock1",
+            name: "Ravi Kumar",
+            email: "ravi@gmail.com",
+            dateOfBirth: "2005-08-27",
+            mobileNumber: 9876543213,
+            status: true,
+          },
+          {
+            _id: "mock2",
+            name: "Deeksha Sharma",
+            email: "deeksha@gmail.com",
+            dateOfBirth: "2006-03-15",
+            mobileNumber: 9849639877,
+            status: true,
+          }
+        ];
+        localStorage.setItem("users", JSON.stringify(mockUsers));
+        return mockUsers;
+      } else {
+        const parsedUsers = JSON.parse(storedUsers);
+        return parsedUsers.filter(u => u.status !== false);
       }
+    } catch (err) {
+      console.error("Failed to load users from localStorage:", err);
+      return [];
     }
-
-    getUsers();
-  }, []);
+  });
+  let navigate=useNavigate()
 
 
   //go to user

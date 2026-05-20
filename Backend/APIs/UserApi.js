@@ -1,6 +1,6 @@
 // Create mini-express app
 import exp from "express";
-import { UserModel } from "../models/UserModel.js";
+import { UserModel } from "../Models/UserModel.js";
 export const UserApp = exp.Router();
 
 //USER API ROUTES
@@ -66,3 +66,16 @@ UserApp.patch("/users/:id", async (req, res) => {
 //PUT(complete change) & PATCH(partial changes)
 
 // Update user by ID
+UserApp.put("/users/:id", async (req, res, next) => {
+  try {
+    let uid = req.params.id;
+    let modifiedUser = req.body;
+    let user = await UserModel.findByIdAndUpdate(uid, modifiedUser, { new: true, runValidators: true });
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+    res.status(200).json({ message: "User updated", payload: user });
+  } catch (err) {
+    next(err);
+  }
+});

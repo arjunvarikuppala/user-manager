@@ -1,55 +1,35 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+
+const saveUserToLocalStorage = (newUser) => {
+  const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  const userToSave = {
+    ...newUser,
+    _id: Date.now().toString(),
+    status: true,
+  };
+  existingUsers.push(userToSave);
+  localStorage.setItem("users", JSON.stringify(existingUsers));
+};
 
 function AddUser() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
-
-  let [loading, setLoading] = useState(false);
-  let [error, setError] = useState(null);
 
   let navigate = useNavigate();
 
   //form submit
-  const onUserCreate = async (newUser) => {
-    //console.log(newUser);
-    setLoading(true);
-    // make HTTP POST req to create new user
+  const onUserCreate = (newUser) => {
     try {
-      let res = await fetch("/user-api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
-
-      if (res.status === 201) {
-        //user created it shd navigate to users list
-        navigate("/users-list");
-      } else {
-        console.log(res)
-        throw new Error("error occurred");
-      }
+      saveUserToLocalStorage(newUser);
+      // Navigate to users list
+      navigate("/users-list");
     } catch (err) {
-      console.log(err)
-      setError(err);
-    } finally {
-      setLoading(false);
+      console.error("Failed to save user:", err);
     }
   };
-
-  if (loading) {
-    return <p className="text-center text-orange-400 text-3xl"> Loading...</p>;
-  }
-
-  if (error) {
-    return <p className="text-center text-red-400 text-3xl"> {error.message}</p>;
-  }
 
   return (
     <div className="text-center">
